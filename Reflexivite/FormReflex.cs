@@ -20,30 +20,14 @@ namespace Reflexivite
 
         private void FormReflex_Load(object sender, EventArgs e)
         {
-            var classes = GetClasses();
+            ConstructorInfo[] p = typeof(ClassAnimal).GetConstructors(
+            BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var item in p)
+            {
+                cb_Classes.Items.Add(item.Name);
+            }
         }
-
-        List<Type> GetClasses()
-        {
-            return Assembly.GetExecutingAssembly().GetTypes()
-                    .Where(t => t.IsClass && t.Namespace == "Reflexivite")
-                    .ToList();
-        }
-
-
-        private Type GetType(string name)
-        {
-            return Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(u => u.IsClass && u.Namespace == "Reflexivite" && u.Name == name);
-        }
-
-    /*
-        private void CbClasses_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(cb_Classes.SelectedItem.ToString()))
-                UcConstructeurs.Display(GetType(cb_Classes.SelectedItem.ToString()));
-        }
-
-    */
 
     }
 }
