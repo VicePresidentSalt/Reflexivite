@@ -29,32 +29,56 @@
         private void InitializeComponent()
         {
             this.cb_Classes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userControl_Constructeurs1 = new Reflexivite.UserControl_Constructeurs();
             this.SuspendLayout();
             // 
             // cb_Classes
             // 
             this.cb_Classes.FormattingEnabled = true;
-            this.cb_Classes.Location = new System.Drawing.Point(152, 12);
+            this.cb_Classes.Location = new System.Drawing.Point(332, 12);
             this.cb_Classes.Name = "cb_Classes";
             this.cb_Classes.Size = new System.Drawing.Size(239, 21);
             this.cb_Classes.TabIndex = 0;
+            this.cb_Classes.SelectedIndexChanged += new System.EventHandler(this.cb_Classes_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(264, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Classes :";
+            // 
+            // userControl_Constructeurs1
+            // 
+            this.userControl_Constructeurs1.Location = new System.Drawing.Point(21, 38);
+            this.userControl_Constructeurs1.Name = "userControl_Constructeurs1";
+            this.userControl_Constructeurs1.Size = new System.Drawing.Size(801, 433);
+            this.userControl_Constructeurs1.TabIndex = 2;
             // 
             // FormReflex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 383);
+            this.ClientSize = new System.Drawing.Size(886, 476);
+            this.Controls.Add(this.userControl_Constructeurs1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_Classes);
             this.Name = "FormReflex";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormReflex_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ComboBox cb_Classes;
+        private System.Windows.Forms.Label label1;
+        private UserControl_Constructeurs userControl_Constructeurs1;
     }
 }
 

@@ -1,5 +1,4 @@
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\bin\Debug\Reflexivite.exe.config
-C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.csprojResolveAssemblyReference.cache
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.FormReflex.resources
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.Properties.Resources.resources
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.csproj.GenerateResource.Cache
@@ -7,3 +6,6 @@ C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\bin\Debug\Reflexivite
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\bin\Debug\Reflexivite.pdb
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.exe
 C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.pdb
+C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.UserControl_Constructeurs.resources
+C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.UserControl_Methodes.resources
+C:\Users\Hcfranck\Documents\GitHub\Reflexivite\Reflexivite\obj\Debug\Reflexivite.csprojResolveAssemblyReference.cache

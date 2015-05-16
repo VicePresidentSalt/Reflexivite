@@ -23,7 +23,7 @@ namespace Reflexivite
             SetAdoptionDate(DateTime.Now);
         }
 
-        public ClassAnimal(int age , string nom)
+        public ClassAnimal(int age, string nom)
         {
             SetAge(age);
             SetNom(nom);
@@ -32,7 +32,7 @@ namespace Reflexivite
             SetAdoptionDate(DateTime.Now);
         }
 
-        public ClassAnimal(int age, string nom , string type)
+        public ClassAnimal(int age, string nom, string type)
         {
             SetAge(age);
             SetNom(nom);
@@ -40,7 +40,7 @@ namespace Reflexivite
             SetType(type);
             SetAdoptionDate(DateTime.Now);
         }
-        public ClassAnimal(int age, string nom, string type , string race)
+        public ClassAnimal(int age, string nom, string type, string race)
         {
             SetAge(age);
             SetNom(nom);
@@ -48,7 +48,7 @@ namespace Reflexivite
             SetType(type);
             SetAdoptionDate(DateTime.Now);
         }
-        public ClassAnimal(int age, string nom, string type, string race , DateTime adoptionDate)
+        public ClassAnimal(int age, string nom, string type, string race, DateTime adoptionDate)
         {
             SetAge(age);
             SetNom(nom);
