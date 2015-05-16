@@ -49,6 +49,7 @@
             this.listBox_Methodes.Name = "listBox_Methodes";
             this.listBox_Methodes.Size = new System.Drawing.Size(342, 329);
             this.listBox_Methodes.TabIndex = 2;
+            this.listBox_Methodes.SelectedIndexChanged += new System.EventHandler(this.listBox_Methodes_SelectedIndexChanged);
             // 
             // btn_Appliquer
             // 
@@ -58,6 +59,7 @@
             this.btn_Appliquer.TabIndex = 3;
             this.btn_Appliquer.Text = "Appliquer";
             this.btn_Appliquer.UseVisualStyleBackColor = true;
+            this.btn_Appliquer.Click += new System.EventHandler(this.btn_Appliquer_Click);
             // 
             // UserControl_Methodes
             // 

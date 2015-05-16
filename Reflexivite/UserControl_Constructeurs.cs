@@ -21,11 +21,6 @@ namespace Reflexivite
             InitializeComponent();
             btn_Construire.Enabled = false;
         }
-
-        private void UserControl_Constructeurs_Load(object sender, EventArgs e)
-        {
-            
-        }
         public void ShowConstructeurs(Type Type)
         {
             listBox_Constructeurs.DataSource = Type.GetConstructors();
@@ -42,17 +37,14 @@ namespace Reflexivite
             if (info.GetParameters().Length == 0)
             {
                 userControl_Methodes1.ShowMethods(type, info.Invoke(info.GetParameters()));
+                userControl_Methodes1.ChangeButtonState();
                 MessageBox.Show("Objet construit");
             }
             else
             {
+                userControl_Methodes1.ChangeButtonState();
             }
         }
-
-        private void listBox_Constructeurs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         public ConstructorInfo getConstructorInfos()
         {
             ConstructorInfo info = (ConstructorInfo)listBox_Constructeurs.SelectedItem;

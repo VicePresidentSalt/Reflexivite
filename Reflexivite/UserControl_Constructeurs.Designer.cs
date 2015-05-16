@@ -48,7 +48,7 @@
             this.listBox_Constructeurs.FormattingEnabled = true;
             this.listBox_Constructeurs.Location = new System.Drawing.Point(21, 45);
             this.listBox_Constructeurs.Name = "listBox_Constructeurs";
-            this.listBox_Constructeurs.Size = new System.Drawing.Size(342, 329);
+            this.listBox_Constructeurs.Size = new System.Drawing.Size(395, 329);
             this.listBox_Constructeurs.TabIndex = 1;
             // 
             // btn_Construire
@@ -63,7 +63,7 @@
             // 
             // userControl_Methodes1
             // 
-            this.userControl_Methodes1.Location = new System.Drawing.Point(392, 3);
+            this.userControl_Methodes1.Location = new System.Drawing.Point(436, 0);
             this.userControl_Methodes1.Name = "userControl_Methodes1";
             this.userControl_Methodes1.Size = new System.Drawing.Size(471, 433);
             this.userControl_Methodes1.TabIndex = 3;
@@ -77,7 +77,7 @@
             this.Controls.Add(this.listBox_Constructeurs);
             this.Controls.Add(this.label1);
             this.Name = "UserControl_Constructeurs";
-            this.Size = new System.Drawing.Size(801, 433);
+            this.Size = new System.Drawing.Size(852, 433);
             this.ResumeLayout(false);
             this.PerformLayout();
 
