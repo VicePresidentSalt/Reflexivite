@@ -26,8 +26,8 @@ namespace Reflexivite
 
         public ClassPersonne(int age, string nom)
         {
-            SetAge(18);
-            SetNom("Jean Paul");
+            SetAge(age);
+            SetNom(nom);
             SetCouleurCheveux("Brun");
             SetNationnalite("Canadien");
             SetDateArrive(DateTime.Now);

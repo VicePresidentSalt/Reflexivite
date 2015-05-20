@@ -52,6 +52,12 @@
     <Compile Include="FormReflex.Designer.cs">
       <DependentUpon>FormReflex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Parametres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Parametres.Designer.cs">
+      <DependentUpon>Form_Parametres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl_Constructeurs.cs">
@@ -68,6 +74,9 @@
     </Compile>
     <EmbeddedResource Include="FormReflex.resx">
       <DependentUpon>FormReflex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Parametres.resx">
+      <DependentUpon>Form_Parametres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -21,7 +21,7 @@ namespace Reflexivite
             btn_Appliquer.Enabled = false;
         }
 
-        public void ShowMethods<T>(Type Type , T ClassT)
+        public void ShowMethods<T>(Type Type, T ClassT)
         {
             obj = ClassT;
             listBox_Methodes.DataSource = Type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.Static);
@@ -49,8 +49,13 @@ namespace Reflexivite
                     MessageBox.Show("Opération réussie");
             }
             else
-            { 
-                
+            {
+                Form_Parametres form = new Form_Parametres(info.GetParameters());
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    var returnMethod = info.Invoke(obj, form.objets);
+                    MessageBox.Show("Opération réussie");
+                }
             }
         }
     }

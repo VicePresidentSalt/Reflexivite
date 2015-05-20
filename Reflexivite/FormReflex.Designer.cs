@@ -55,14 +55,14 @@
             // 
             this.userControl_Constructeurs1.Location = new System.Drawing.Point(21, 38);
             this.userControl_Constructeurs1.Name = "userControl_Constructeurs1";
-            this.userControl_Constructeurs1.Size = new System.Drawing.Size(801, 433);
+            this.userControl_Constructeurs1.Size = new System.Drawing.Size(834, 433);
             this.userControl_Constructeurs1.TabIndex = 2;
             // 
             // FormReflex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 476);
+            this.ClientSize = new System.Drawing.Size(898, 476);
             this.Controls.Add(this.userControl_Constructeurs1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_Classes);

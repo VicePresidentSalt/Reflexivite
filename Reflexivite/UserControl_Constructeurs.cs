@@ -38,7 +38,7 @@ namespace Reflexivite
             {
                 userControl_Methodes1.ShowMethods(type, info.Invoke(info.GetParameters()));
                 userControl_Methodes1.ChangeButtonState();
-                MessageBox.Show("Objet construit");
+                MessageBox.Show("L'objet est construit");
             }
             else
             {
@@ -47,7 +47,7 @@ namespace Reflexivite
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     userControl_Methodes1.ShowMethods(type, info.Invoke(form.objets));
-                    MessageBox.Show("L'objet a été construit");
+                    MessageBox.Show("L'objet est construit");
                 }
 
             }
