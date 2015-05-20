@@ -37,7 +37,6 @@ namespace Reflexivite
             for (int i = 0; i < parameters.Length; ++i)
             {
                 Control[] ctrl = Controls.Find(parameters[i].Name, true);
-                errorProvider1.SetError(ctrl[0].Parent, string.Empty);
                
 
                 if (ctrl[0] is CheckBox)
@@ -46,44 +45,35 @@ namespace Reflexivite
                     objets[i] = ((DateTimePicker)ctrl[0]).Value.Date;
                 else if (ctrl[0] is TextBox)
                     objets[i] = ConvertTo((TextBox)ctrl[0], parameters[i]);
-
-                if (!string.IsNullOrEmpty(errorProvider1.GetError(ctrl[0].Parent))) return;
             }
 
             DialogResult = DialogResult.OK;
         }
-        
-        private object ConvertTo(TextBox ctrl, ParameterInfo pi)
-		{
-			string valeur = ctrl.Text;
 
-			switch (pi.ParameterType.Name)
-			{
-				case "Int32":
-					int nbInt;
-					if (int.TryParse(valeur, out nbInt))
-						return nbInt;
-					else
-						errorProvider1.SetError(ctrl.Parent, "La valeur doit être un entier.");
-					break;
-				case "Float":
-					float nbFloat;
-					if (float.TryParse(valeur, out nbFloat))
-						return nbFloat;
-					else
-						errorProvider1.SetError(ctrl.Parent, "La valeur doit être un float.");
-					break;
-				case "Double":
-					double nbDouble;
-					if (double.TryParse(valeur, out nbDouble))
-						return nbDouble;
-					else
-						errorProvider1.SetError(ctrl.Parent, "La valeur doit être un double.");
-					break;
-			}
+        private object ConvertTo(TextBox ctrl, ParameterInfo pi)
+        {
+            string valeur = ctrl.Text;
+
+            switch (pi.ParameterType.Name)
+            {
+                case "Int32":
+                    int nbInt;
+                    if (int.TryParse(valeur, out nbInt))
+                        return nbInt;
+                    break;
+                case "Float":
+                    float nbFloat;
+                    if (float.TryParse(valeur, out nbFloat))
+                        return nbFloat;
+                    break;
+                case "Double":
+                    double nbDouble;
+                    if (double.TryParse(valeur, out nbDouble))
+                        return nbDouble;
+                    break;
+            }
             return valeur;
         }
-         
 
 
         private FlowLayoutPanel GetFlowLayoutPanel(ParameterInfo pi)
@@ -94,11 +84,11 @@ namespace Reflexivite
 
             switch (pi.ParameterType.Name)
             {
-                case "DateTime":
-                    flp.Controls.Add(GetDateTimePicker(pi));
-                    break;
                 case "Boolean":
                     flp.Controls.Add(GetCheckBox(pi));
+                    break;
+                case "DateTime":
+                    flp.Controls.Add(GetDateTimePicker(pi));
                     break;
                 default:
                     flp.Controls.Add(GetTextBox(pi));
@@ -121,24 +111,30 @@ namespace Reflexivite
 
         private TextBox GetTextBox(ParameterInfo pi)
         {
-            TextBox txtBox = new TextBox();
-            return txtBox;
+            TextBox txt = new TextBox();
+            txt.Font = new System.Drawing.Font(txt.Font, System.Drawing.FontStyle.Bold);
+            txt.Name = pi.Name;
+            return txt;
         }
 
 
         private DateTimePicker GetDateTimePicker(ParameterInfo pi)
         {
-            DateTimePicker dateTimePicker = new DateTimePicker();
-            dateTimePicker.Name = pi.Name;
-            return dateTimePicker;
+            DateTimePicker dtp = new DateTimePicker();
+            dtp.Format = DateTimePickerFormat.Short;
+            dtp.Width = 93;
+            dtp.Name = pi.Name;
+            return dtp;
         }
 
 
         private CheckBox GetCheckBox(ParameterInfo pi)
         {
-            CheckBox checkBox = new CheckBox();
-            checkBox.Name = pi.Name;
-            return checkBox;
+            CheckBox chk = new CheckBox();
+            chk.FlatStyle = FlatStyle.Flat;
+            chk.Padding = new Padding(0, 0, 0, 3);
+            chk.Name = pi.Name;
+            return chk;
         }
 
     }
