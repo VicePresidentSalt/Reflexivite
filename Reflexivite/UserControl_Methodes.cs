@@ -42,11 +42,15 @@ namespace Reflexivite
             info = (MethodInfo)listBox_Methodes.SelectedItem;
             if (info.GetParameters().Length == 0)
             {
-                var returnMethod = info.Invoke(obj,null);
+                var returnMethod = info.Invoke(obj, null);
                 if (returnMethod != null)
                     MessageBox.Show(returnMethod.ToString());
                 else
                     MessageBox.Show("Opération réussie");
+            }
+            else
+            { 
+                
             }
         }
     }
