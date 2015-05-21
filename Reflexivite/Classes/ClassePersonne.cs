@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reflexivite
+namespace Reflexivite.Classes
 {
     class ClassPersonne
     {

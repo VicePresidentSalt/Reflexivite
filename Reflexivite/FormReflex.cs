@@ -20,7 +20,7 @@ namespace Reflexivite
 
         private void FormReflex_Load(object sender, EventArgs e)
         {
-            var theList = Assembly.GetExecutingAssembly().GetTypes().ToList().Where(t => t.IsClass && t.Namespace == "Reflexivite").ToList();
+            var theList = Assembly.GetExecutingAssembly().GetTypes().ToList().Where(t => t.IsClass && t.Namespace == "Reflexivite.Classes").ToList();
             foreach (var item in theList)
             {
                 cb_Classes.Items.Add(item.Name);
@@ -38,7 +38,7 @@ namespace Reflexivite
         {
             return AppDomain.CurrentDomain.GetAssemblies()
                                 .SelectMany(a => a.GetTypes())
-                                .Where(t => t.Name == classe && t.IsClass && t.Namespace == "Reflexivite")
+                                .Where(t => t.Name == classe && t.IsClass && t.Namespace == "Reflexivite.Classes")
                                 .FirstOrDefault();
         }
     }
