@@ -46,7 +46,7 @@ namespace Reflexivite
                 Form_Parametres form = new Form_Parametres(info.GetParameters());
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    userControl_Methodes.ShowMethods(type, info.Invoke(form.controle));
+                    userControl_Methodes.ShowMethods(type, info.Invoke(form.controles));
                     MessageBox.Show("L'objet est construit");
                 }
 

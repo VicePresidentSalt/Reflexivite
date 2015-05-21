@@ -13,7 +13,7 @@ namespace Reflexivite
 {
     public partial class Form_Parametres : Form
     {
-        public dynamic[] controle = null;
+        public dynamic[] controles = null;
         private ParameterInfo[] paramInfos;
 
         public Form_Parametres()
@@ -25,7 +25,7 @@ namespace Reflexivite
 		{
 			InitializeComponent();
 
-			controle = new dynamic[pi.Length];
+			controles = new dynamic[pi.Length];
             paramInfos = pi;
 
             foreach (var piInfos in paramInfos)
@@ -55,34 +55,33 @@ namespace Reflexivite
             for (int i = 0; i < paramInfos.Length; ++i)
             {
                 Control[] ctrl = Controls.Find(paramInfos[i].Name, true);
+                errorProvider.SetError(ctrl[0].Parent, string.Empty); // remettre le errorprovider à vide
                 string typeCtrl = ctrl[0].GetType().Name;
 
                 switch (typeCtrl)
                 {
                     case "DateTimePicker":
-                        controle[i] = ((DateTimePicker)ctrl[0]).Value.Date;
+                        controles[i] = ((DateTimePicker)ctrl[0]).Value.Date;
                         break;
 
                     case "TextBox":
                         if (paramInfos[i].ParameterType.FullName == "System.Int32")
                             try
                             {
-                                controle[i] = Convert.ToInt32(ctrl[0].Text);
+                                controles[i] = Convert.ToInt32(ctrl[0].Text);
                             }
                             catch (FormatException)
                             {
-                                MessageBox.Show("Votre entrée n'est pas un entier");
+                                errorProvider.SetError(ctrl[0].Parent,"Votre entrée n'est pas un entier");
                             }
                         else
-                            controle[i] = ctrl[0].Text;
+                            controles[i] = ctrl[0].Text;
                         break;
                 }
-                DialogResult = DialogResult.OK;
+                if (!string.IsNullOrEmpty(errorProvider.GetError(ctrl[0].Parent))) return; // si pas vide return; 
             }
-            
+            DialogResult = DialogResult.OK;    
         }
-
-
         private dynamic GetParameter(string typeCtrl, ParameterInfo paramInfos)
         {
             dynamic typeReturn = null;

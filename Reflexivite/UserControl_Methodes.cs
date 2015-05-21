@@ -51,7 +51,7 @@ namespace Reflexivite
                 Form_Parametres form = new Form_Parametres(info.GetParameters());
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    var returnMethod = info.Invoke(obj, null);
+                    var returnMethod = info.Invoke(obj, form.controles);
                     if (returnMethod == null)
                         MessageBox.Show("Opération réussie");
                     else
