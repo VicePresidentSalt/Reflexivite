@@ -29,7 +29,7 @@ namespace Reflexivite
             paramInfos = pi;
 
             foreach (var piInfos in paramInfos)
-                flp_Parametres.Controls.Add(GetFLP(piInfos));
+            flp_Parametres.Controls.Add(GetFLP(piInfos));
 		}
 
         private FlowLayoutPanel GetFLP(ParameterInfo paramInfos)
@@ -41,9 +41,6 @@ namespace Reflexivite
             {
                 case "DateTime":
                     flowPanel.Controls.Add(GetParameter("DateTimePicker", paramInfos));
-                    break;
-                case "Boolean":
-                    flowPanel.Controls.Add(GetParameter("CheckBox", paramInfos));
                     break;
                 default:
                     flowPanel.Controls.Add(GetParameter("TextBox", paramInfos));
@@ -62,11 +59,6 @@ namespace Reflexivite
 
                 switch (typeCtrl)
                 {
-                    case "CheckBox":
-                        controle[i] = ((CheckBox)ctrl[0]).Checked;
-                        
-                        break;
-
                     case "DateTimePicker":
                         controle[i] = ((DateTimePicker)ctrl[0]).Value.Date;
                         break;

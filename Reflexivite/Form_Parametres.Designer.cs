@@ -37,6 +37,8 @@
             this.flp_Parametres.AutoSize = true;
             this.flp_Parametres.Location = new System.Drawing.Point(16, 9);
             this.flp_Parametres.Margin = new System.Windows.Forms.Padding(0);
+            this.flp_Parametres.MaximumSize = new System.Drawing.Size(1048, 103);
+            this.flp_Parametres.MinimumSize = new System.Drawing.Size(1048, 103);
             this.flp_Parametres.Name = "flp_Parametres";
             this.flp_Parametres.Size = new System.Drawing.Size(1048, 103);
             this.flp_Parametres.TabIndex = 0;
@@ -60,6 +62,8 @@
             this.ClientSize = new System.Drawing.Size(1073, 176);
             this.Controls.Add(this.btn_Confirmer);
             this.Controls.Add(this.flp_Parametres);
+            this.MaximumSize = new System.Drawing.Size(1089, 214);
+            this.MinimumSize = new System.Drawing.Size(1089, 214);
             this.Name = "Form_Parametres";
             this.Text = "Form_Parametres";
             this.ResumeLayout(false);
