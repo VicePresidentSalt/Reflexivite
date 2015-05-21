@@ -30,8 +30,8 @@ namespace Reflexivite
         private void cb_Classes_SelectedIndexChanged(object sender, EventArgs e)
         {
            if (!string.IsNullOrEmpty(cb_Classes.SelectedItem.ToString()))
-                 userControl_Constructeurs1.ShowConstructeurs(GetType(cb_Classes.SelectedItem.ToString()));
-           userControl_Constructeurs1.ChangeButtonState();
+                 userControl_Constructeurs.ShowConstructeurs(GetType(cb_Classes.SelectedItem.ToString()));
+           userControl_Constructeurs.ChangeButtonState();
         }
 
         private Type GetType(string classe)

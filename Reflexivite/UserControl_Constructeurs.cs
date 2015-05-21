@@ -36,17 +36,17 @@ namespace Reflexivite
             info = getConstructorInfos();
             if (info.GetParameters().Length == 0)
             {
-                userControl_Methodes1.ShowMethods(type, info.Invoke(info.GetParameters()));
-                userControl_Methodes1.ChangeButtonState();
+                userControl_Methodes.ShowMethods(type, info.Invoke(info.GetParameters()));
+                userControl_Methodes.ChangeButtonState();
                 MessageBox.Show("L'objet est construit");
             }
             else
             {
-                userControl_Methodes1.ChangeButtonState();
+                userControl_Methodes.ChangeButtonState();
                 Form_Parametres form = new Form_Parametres(info.GetParameters());
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    userControl_Methodes1.ShowMethods(type, info.Invoke(form.objets));
+                    userControl_Methodes.ShowMethods(type, info.Invoke(form.objets));
                     MessageBox.Show("L'objet est construit");
                 }
 

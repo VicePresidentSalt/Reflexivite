@@ -14,7 +14,7 @@ namespace Reflexivite
     public partial class Form_Parametres : Form
     {
         public object[] objets { get; private set; }
-        private ParameterInfo[] parameters;
+        private ParameterInfo[] paramInfos;
 
         public Form_Parametres()
         {
@@ -26,72 +26,56 @@ namespace Reflexivite
 			InitializeComponent();
 
 			objets = new object[p.Length];
-			parameters = p;
+            paramInfos = p;
 
-			foreach (var pi in parameters)
+            foreach (var pi in paramInfos)
 				flp_Parametres.Controls.Add(GetFlowLayoutPanel(pi));
 		}
 
         private void btn_Confirmer_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < parameters.Length; ++i)
+            for (int i = 0; i < paramInfos.Length; ++i)
             {
-                Control[] ctrl = Controls.Find(parameters[i].Name, true);
-               
-
-                if (ctrl[0] is CheckBox)
+                Control[] ctrl = Controls.Find(paramInfos[i].Name, true);
+                string typeCtrl = ctrl[0].GetType().Name;
+                
+                switch (typeCtrl)
+                { 
+                    case "CheckBox":
                     objets[i] = ((CheckBox)ctrl[0]).Checked;
-                else if (ctrl[0] is DateTimePicker)
-                    objets[i] = ((DateTimePicker)ctrl[0]).Value.Date;
-                else if (ctrl[0] is TextBox)
-                    objets[i] = ConvertTo((TextBox)ctrl[0], parameters[i]);
-            }
+                    break;
 
+                    case "DateTimePicker":
+                    objets[i] = ((DateTimePicker)ctrl[0]).Value.Date;
+                    break;
+                    
+                    case "TextBox":
+                         if(paramInfos[i].ParameterType.FullName == "System.Int32")
+                            objets[i]= Convert.ToInt32(ctrl[0].Text);
+                         else
+                             objets[i] = ctrl[0].Text;
+                    break;
+                }
+            }
             DialogResult = DialogResult.OK;
         }
 
-        private object ConvertTo(TextBox ctrl, ParameterInfo pi)
-        {
-            string valeur = ctrl.Text;
-
-            switch (pi.ParameterType.Name)
-            {
-                case "Int32":
-                    int nbInt;
-                    if (int.TryParse(valeur, out nbInt))
-                        return nbInt;
-                    break;
-                case "Float":
-                    float nbFloat;
-                    if (float.TryParse(valeur, out nbFloat))
-                        return nbFloat;
-                    break;
-                case "Double":
-                    double nbDouble;
-                    if (double.TryParse(valeur, out nbDouble))
-                        return nbDouble;
-                    break;
-            }
-            return valeur;
-        }
-
-
-        private FlowLayoutPanel GetFlowLayoutPanel(ParameterInfo pi)
+        private FlowLayoutPanel GetFlowLayoutPanel(ParameterInfo paramInfos)
         {
             FlowLayoutPanel flp = new FlowLayoutPanel();
             flp.AutoSize = true;
-            flp.Controls.Add(GetLabel(pi));
+            flp.Controls.Add(GetParameter("Label", paramInfos));
 
-            switch (pi.ParameterType.Name)
+            switch (paramInfos.ParameterType.Name)
             {
-                case "Boolean":
-                    flp.Controls.Add(GetCheckBox(pi));
-                    break;
                 case "DateTime":
-                    flp.Controls.Add(GetDateTimePicker(pi));
+                    flp.Controls.Add(GetParameter("DateTimePicker", paramInfos));
+                    break;
+                case "Boolean":
+                    flp.Controls.Add(GetParameter("CheckBox", paramInfos));
                     break;
                 default:
-                    flp.Controls.Add(GetTextBox(pi));
+                    flp.Controls.Add(GetParameter("TextBox", paramInfos));
                     break;
             }
 
@@ -99,43 +83,34 @@ namespace Reflexivite
         }
 
 
-        private Label GetLabel(ParameterInfo pi)
+        private dynamic GetParameter(string typeCtrl, ParameterInfo paramInfos)
         {
-            Label lbl = new Label();
-            lbl.Text = pi.Name + ":";
-            lbl.AutoSize = true;
-            lbl.Padding = new Padding(0, 5, 0, 0);
-            return lbl;
+            dynamic typeReturn = null;
+
+            switch (typeCtrl)
+            {
+                case "Label":
+                    Label label = new Label();
+                    label.Text = paramInfos.Name;
+                    typeReturn = label;
+                    break;
+                case "DateTimePicker":
+                    DateTimePicker dateTime = new DateTimePicker();
+                    dateTime.Name = paramInfos.Name;
+                    typeReturn = dateTime;
+                    break;
+                case "CheckBox":
+                    CheckBox checkBox = new CheckBox();
+                    checkBox.Name = paramInfos.Name;
+                    typeReturn = checkBox;
+                    break;
+                case "TextBox":
+                    TextBox txt = new TextBox();
+                    txt.Name = paramInfos.Name;
+                    typeReturn = txt;
+                    break;
+            }
+            return typeReturn;
         }
-
-
-        private TextBox GetTextBox(ParameterInfo pi)
-        {
-            TextBox txt = new TextBox();
-            txt.Font = new System.Drawing.Font(txt.Font, System.Drawing.FontStyle.Bold);
-            txt.Name = pi.Name;
-            return txt;
-        }
-
-
-        private DateTimePicker GetDateTimePicker(ParameterInfo pi)
-        {
-            DateTimePicker dtp = new DateTimePicker();
-            dtp.Format = DateTimePickerFormat.Short;
-            dtp.Width = 93;
-            dtp.Name = pi.Name;
-            return dtp;
-        }
-
-
-        private CheckBox GetCheckBox(ParameterInfo pi)
-        {
-            CheckBox chk = new CheckBox();
-            chk.FlatStyle = FlatStyle.Flat;
-            chk.Padding = new Padding(0, 0, 0, 3);
-            chk.Name = pi.Name;
-            return chk;
-        }
-
     }
 }
