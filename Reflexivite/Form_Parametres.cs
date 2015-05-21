@@ -13,7 +13,7 @@ namespace Reflexivite
 {
     public partial class Form_Parametres : Form
     {
-        public object[] objets { get; private set; }
+        public dynamic[] controle = null;
         private ParameterInfo[] paramInfos;
 
         public Form_Parametres()
@@ -21,16 +21,37 @@ namespace Reflexivite
             InitializeComponent();
         }
 
-        public Form_Parametres(ParameterInfo[] p)
+        public Form_Parametres(ParameterInfo[] pi)
 		{
 			InitializeComponent();
 
-			objets = new object[p.Length];
-            paramInfos = p;
+			controle = new dynamic[pi.Length];
+            paramInfos = pi;
 
-            foreach (var pi in paramInfos)
-				flp_Parametres.Controls.Add(GetFlowLayoutPanel(pi));
+            foreach (var piInfos in paramInfos)
+                flp_Parametres.Controls.Add(GetFLP(piInfos));
 		}
+
+        private FlowLayoutPanel GetFLP(ParameterInfo paramInfos)
+        {
+            FlowLayoutPanel flowPanel = new FlowLayoutPanel();
+            flowPanel.Controls.Add(GetParameter("Label", paramInfos));
+
+            switch (paramInfos.ParameterType.Name)
+            {
+                case "DateTime":
+                    flowPanel.Controls.Add(GetParameter("DateTimePicker", paramInfos));
+                    break;
+                case "Boolean":
+                    flowPanel.Controls.Add(GetParameter("CheckBox", paramInfos));
+                    break;
+                default:
+                    flowPanel.Controls.Add(GetParameter("TextBox", paramInfos));
+                    break;
+            }
+
+            return flowPanel;
+        }
 
         private void btn_Confirmer_Click(object sender, EventArgs e)
         {
@@ -38,48 +59,35 @@ namespace Reflexivite
             {
                 Control[] ctrl = Controls.Find(paramInfos[i].Name, true);
                 string typeCtrl = ctrl[0].GetType().Name;
-                
+
                 switch (typeCtrl)
-                { 
+                {
                     case "CheckBox":
-                    objets[i] = ((CheckBox)ctrl[0]).Checked;
-                    break;
+                        controle[i] = ((CheckBox)ctrl[0]).Checked;
+                        
+                        break;
 
                     case "DateTimePicker":
-                    objets[i] = ((DateTimePicker)ctrl[0]).Value.Date;
-                    break;
-                    
+                        controle[i] = ((DateTimePicker)ctrl[0]).Value.Date;
+                        break;
+
                     case "TextBox":
-                         if(paramInfos[i].ParameterType.FullName == "System.Int32")
-                            objets[i]= Convert.ToInt32(ctrl[0].Text);
-                         else
-                             objets[i] = ctrl[0].Text;
-                    break;
+                        if (paramInfos[i].ParameterType.FullName == "System.Int32")
+                            try
+                            {
+                                controle[i] = Convert.ToInt32(ctrl[0].Text);
+                            }
+                            catch (FormatException)
+                            {
+                                MessageBox.Show("Votre entrée n'est pas un entier");
+                            }
+                        else
+                            controle[i] = ctrl[0].Text;
+                        break;
                 }
+                DialogResult = DialogResult.OK;
             }
-            DialogResult = DialogResult.OK;
-        }
-
-        private FlowLayoutPanel GetFlowLayoutPanel(ParameterInfo paramInfos)
-        {
-            FlowLayoutPanel flp = new FlowLayoutPanel();
-            flp.AutoSize = true;
-            flp.Controls.Add(GetParameter("Label", paramInfos));
-
-            switch (paramInfos.ParameterType.Name)
-            {
-                case "DateTime":
-                    flp.Controls.Add(GetParameter("DateTimePicker", paramInfos));
-                    break;
-                case "Boolean":
-                    flp.Controls.Add(GetParameter("CheckBox", paramInfos));
-                    break;
-                default:
-                    flp.Controls.Add(GetParameter("TextBox", paramInfos));
-                    break;
-            }
-
-            return flp;
+            
         }
 
 

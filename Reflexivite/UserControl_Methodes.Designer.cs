@@ -49,7 +49,6 @@
             this.listBox_Methodes.Name = "listBox_Methodes";
             this.listBox_Methodes.Size = new System.Drawing.Size(342, 329);
             this.listBox_Methodes.TabIndex = 2;
-            this.listBox_Methodes.SelectedIndexChanged += new System.EventHandler(this.listBox_Methodes_SelectedIndexChanged);
             // 
             // btn_Appliquer
             // 

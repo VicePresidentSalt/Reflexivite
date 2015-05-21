@@ -46,13 +46,13 @@ namespace Reflexivite
                 Form_Parametres form = new Form_Parametres(info.GetParameters());
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    userControl_Methodes.ShowMethods(type, info.Invoke(form.objets));
+                    userControl_Methodes.ShowMethods(type, info.Invoke(form.controle));
                     MessageBox.Show("L'objet est construit");
                 }
 
             }
         }
-        public ConstructorInfo getConstructorInfos()
+        private ConstructorInfo getConstructorInfos()
         {
             ConstructorInfo info = (ConstructorInfo)listBox_Constructeurs.SelectedItem;
             return info;

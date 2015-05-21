@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.IO;
 
 namespace Reflexivite
 {
     public partial class UserControl_Methodes : UserControl
     {
-        private object obj = null;
+        private dynamic obj = null;
         private MethodInfo info = null;
+
         public UserControl_Methodes()
         {
             InitializeComponent();
@@ -28,10 +30,6 @@ namespace Reflexivite
             btn_Appliquer.Enabled = true;
         }
 
-        private void listBox_Methodes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         public void ChangeButtonState()
         {
             btn_Appliquer.Enabled = true;
@@ -43,19 +41,23 @@ namespace Reflexivite
             if (info.GetParameters().Length == 0)
             {
                 var returnMethod = info.Invoke(obj, null);
-                if (returnMethod != null)
-                    MessageBox.Show(returnMethod.ToString());
-                else
+                if (returnMethod == null)
                     MessageBox.Show("Opération réussie");
+                else
+                    MessageBox.Show(returnMethod.ToString());
             }
             else
             {
                 Form_Parametres form = new Form_Parametres(info.GetParameters());
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    var returnMethod = info.Invoke(obj, form.objets);
-                    MessageBox.Show("Opération réussie");
+                    var returnMethod = info.Invoke(obj, null);
+                    if (returnMethod == null)
+                        MessageBox.Show("Opération réussie");
+                    else
+                        MessageBox.Show(returnMethod.ToString());
                 }
+
             }
         }
     }

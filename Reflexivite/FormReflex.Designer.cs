@@ -30,7 +30,7 @@
         {
             this.cb_Classes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.userControl_Constructeurs1 = new Reflexivite.UserControl_Constructeurs();
+            this.userControl_Constructeurs = new Reflexivite.UserControl_Constructeurs();
             this.SuspendLayout();
             // 
             // cb_Classes
@@ -51,21 +51,23 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Classes :";
             // 
-            // userControl_Constructeurs1
+            // userControl_Constructeurs
             // 
-            this.userControl_Constructeurs1.Location = new System.Drawing.Point(21, 38);
-            this.userControl_Constructeurs1.Name = "userControl_Constructeurs1";
-            this.userControl_Constructeurs1.Size = new System.Drawing.Size(834, 433);
-            this.userControl_Constructeurs1.TabIndex = 2;
+            this.userControl_Constructeurs.Location = new System.Drawing.Point(21, 38);
+            this.userControl_Constructeurs.Name = "userControl_Constructeurs";
+            this.userControl_Constructeurs.Size = new System.Drawing.Size(834, 433);
+            this.userControl_Constructeurs.TabIndex = 2;
             // 
             // FormReflex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 476);
-            this.Controls.Add(this.userControl_Constructeurs1);
+            this.Controls.Add(this.userControl_Constructeurs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb_Classes);
+            this.MaximumSize = new System.Drawing.Size(914, 514);
+            this.MinimumSize = new System.Drawing.Size(914, 514);
             this.Name = "FormReflex";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormReflex_Load);
@@ -78,7 +80,7 @@
 
         private System.Windows.Forms.ComboBox cb_Classes;
         private System.Windows.Forms.Label label1;
-        private UserControl_Constructeurs userControl_Constructeurs1;
+        private UserControl_Constructeurs userControl_Constructeurs;
     }
 }
 

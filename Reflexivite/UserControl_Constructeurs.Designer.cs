@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBox_Constructeurs = new System.Windows.Forms.ListBox();
             this.btn_Construire = new System.Windows.Forms.Button();
-            this.userControl_Methodes1 = new Reflexivite.UserControl_Methodes();
+            this.userControl_Methodes = new Reflexivite.UserControl_Methodes();
             this.SuspendLayout();
             // 
             // label1
@@ -63,16 +63,16 @@
             // 
             // userControl_Methodes1
             // 
-            this.userControl_Methodes1.Location = new System.Drawing.Point(436, 0);
-            this.userControl_Methodes1.Name = "userControl_Methodes1";
-            this.userControl_Methodes1.Size = new System.Drawing.Size(471, 433);
-            this.userControl_Methodes1.TabIndex = 3;
+            this.userControl_Methodes.Location = new System.Drawing.Point(436, 0);
+            this.userControl_Methodes.Name = "userControl_Methodes1";
+            this.userControl_Methodes.Size = new System.Drawing.Size(471, 433);
+            this.userControl_Methodes.TabIndex = 3;
             // 
             // UserControl_Constructeurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.userControl_Methodes1);
+            this.Controls.Add(this.userControl_Methodes);
             this.Controls.Add(this.btn_Construire);
             this.Controls.Add(this.listBox_Constructeurs);
             this.Controls.Add(this.label1);
@@ -88,6 +88,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox_Constructeurs;
         private System.Windows.Forms.Button btn_Construire;
-        private UserControl_Methodes userControl_Methodes1;
+        private UserControl_Methodes userControl_Methodes;
     }
 }
